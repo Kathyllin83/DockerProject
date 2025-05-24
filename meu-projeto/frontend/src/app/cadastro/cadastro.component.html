@@ -1,0 +1,23 @@
+<h2>Cadastro</h2>
+
+<form (ngSubmit)="enviar()" #formCadastro="ngForm">
+
+  <label>
+    Nome:
+    <input type="text" name="nome" [(ngModel)]="usuario.nome" required />
+  </label><br /><br />
+
+  <label>
+    E-mail:
+    <input type="email" name="email" [(ngModel)]="usuario.email" required />
+  </label><br /><br />
+
+  <label>
+    CPF:
+    <input type="text" name="cpf" [(ngModel)]="usuario.cpf" required maxlength="14" placeholder="000.000.000-00" />
+  </label><br /><br />
+
+  <button type="submit" [disabled]="formCadastro.invalid">Enviar</button>
+</form>
+
+<p *ngIf="mensagem">{{ mensagem }}</p>
