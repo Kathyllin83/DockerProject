@@ -1,23 +1,37 @@
-<h2>Cadastro</h2>
+<div class="container">
+  <h1>Cadastro</h1>
 
-<form (ngSubmit)="enviar()" #formCadastro="ngForm">
+  <div *ngIf="mensagem" [class]="mensagem.includes('sucesso') ? 'mensagem sucesso' : 'mensagem erro'">
+    {{ mensagem }}
+  </div>
 
-  <label>
-    Nome:
-    <input type="text" name="nome" [(ngModel)]="usuario.nome" required />
-  </label><br /><br />
+  <form (ngSubmit)="cadastrar()">
+    <input
+      type="text"
+      placeholder="Nome"
+      [(ngModel)]="usuario.nome"
+      name="nome"
+      required
+    />
 
-  <label>
-    E-mail:
-    <input type="email" name="email" [(ngModel)]="usuario.email" required />
-  </label><br /><br />
+    <input
+      type="email"
+      placeholder="Email"
+      [(ngModel)]="usuario.email"
+      name="email"
+      required
+    />
 
-  <label>
-    CPF:
-    <input type="text" name="cpf" [(ngModel)]="usuario.cpf" required maxlength="14" placeholder="000.000.000-00" />
-  </label><br /><br />
+    <input
+      type="text"
+      placeholder="CPF"
+      [(ngModel)]="usuario.cpf"
+      name="cpf"
+      required
+    />
 
-  <button type="submit" [disabled]="formCadastro.invalid">Enviar</button>
-</form>
+    <button type="submit">Cadastrar</button>
+  </form>
 
-<p *ngIf="mensagem">{{ mensagem }}</p>
+  <a routerLink="/login" class="link-tela">Já tem conta? Faça login</a>
+</div>

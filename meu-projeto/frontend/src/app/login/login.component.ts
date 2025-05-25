@@ -5,26 +5,25 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 @Component({
-  selector: 'app-cadastro',
+  selector: 'app-login',
   standalone: true,
   imports: [FormsModule, CommonModule,RouterModule],
-  templateUrl: './cadastro.component.html',
-  styleUrls: ['./cadastro.component.css']
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
-export class CadastroComponent {
-  usuario = { nome: '', email: '', cpf: '' };
+export class LoginComponent {
+  dados = { email: '', cpf: '' };
   mensagem = '';
 
   constructor(private http: HttpClient, private router: Router) {}
 
-  cadastrar() {
-    this.http.post<{ mensagem: string }>('http://localhost:4000/cadastrar', this.usuario).subscribe({
+  login() {
+    this.http.post<{ mensagem?: string }>('http://localhost:4000/login', this.dados).subscribe({
       next: () => {
-        this.mensagem = 'Cadastro realizado com sucesso!';
-        this.router.navigate(['/login']);
+        this.router.navigate(['/inicio']);
       },
       error: (err) => {
-        this.mensagem = err.error?.mensagem || 'Erro ao cadastrar usuário.';
+        this.mensagem = err.error?.mensagem || 'Credenciais inválidas.';
       }
     });
   }
