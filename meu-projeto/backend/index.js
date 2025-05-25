@@ -8,11 +8,8 @@ const Usuario = require("./models/usuario");
 const app = express();
 const PORT = 4000;
 
-// const MONGO_URI =
-//   "mongodb+srv://dbAdmin:CXI8xDbM5YYRPIS0@cluster0.lu0bsyj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
-const MONGO_URI = process.env.MONGO_URI;
 
-//                 👆👆 Substitua 'SeuBanco' por um nome de banco, ex: cadastroDB
+const MONGO_URI = process.env.MONGO_URI;
 
 app.use(cors());
 app.use(express.json());
