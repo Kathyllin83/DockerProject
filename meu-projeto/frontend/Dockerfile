@@ -13,7 +13,7 @@ RUN npm run build
 # Production stage
 FROM nginx:alpine
 
-COPY --from=build /app/dist/frontend /usr/share/nginx/html
+COPY --from=build /app/dist/frontend/browser /usr/share/nginx/html
 
 # Expõe a porta padrão do ng serve
 EXPOSE 80
