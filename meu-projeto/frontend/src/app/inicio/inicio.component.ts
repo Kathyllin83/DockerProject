@@ -21,7 +21,7 @@ export class InicioComponent implements OnInit {
   }
 
   remover(id: string) {
-    this.http.delete(`http://localhost:3001/usuarios/${id}`).subscribe(() => {
+    this.http.delete(`http://localhost:4000/usuarios/${id}`).subscribe(() => {
       this.usuarios = this.usuarios.filter(u => u._id !== id);
     });
     
