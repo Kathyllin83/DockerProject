@@ -7,6 +7,7 @@ services:
       - "4000:4000"
     volumes:
       - ./backend:/app
+      - /app/node_modules
     restart: always
     environment:
       - MONGO_URI=seu-mongo-uri
