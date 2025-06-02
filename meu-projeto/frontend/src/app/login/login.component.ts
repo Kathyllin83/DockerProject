@@ -18,7 +18,7 @@ export class LoginComponent {
   constructor(private http: HttpClient, private router: Router) {}
 
   login() {
-    this.http.post<{ mensagem?: string }>('http://localhost:3001/login', this.dados).subscribe({
+    this.http.post<{ mensagem?: string }>('http://localhost:4000/login', this.dados).subscribe({
       next: () => {
         this.router.navigate(['/inicio']);
       },

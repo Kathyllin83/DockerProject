@@ -15,7 +15,7 @@ export class InicioComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
-    this.http.get<any[]>('http://localhost:3001/usuarios').subscribe(data => {
+    this.http.get<any[]>('http://localhost:4000/usuarios').subscribe(data => {
       this.usuarios = data;
     });
   }
