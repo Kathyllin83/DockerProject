@@ -7,10 +7,9 @@ services:
       - "4000:4000"
     volumes:
       - ./backend:/app
-      - /app/node_modules
     restart: always
     environment:
-      - MONGO_URI=seu-mongo-uri
+      - MONGO_URI=mongodb+srv://<username>:<password>@cluster0.mongodb.net/<dbname>?retryWrites=true&w=majority
 
   frontend:
     build: ./frontend
@@ -19,3 +18,4 @@ services:
     restart: always
     depends_on:
       - backend
+
