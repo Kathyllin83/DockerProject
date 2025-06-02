@@ -4,12 +4,15 @@ import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+
+import { environment } from '../../environments/environment';
+
 @Component({
   selector: 'app-cadastro',
   standalone: true,
-  imports: [FormsModule, CommonModule,RouterModule],
+  imports: [FormsModule, CommonModule, RouterModule],
   templateUrl: './cadastro.component.html',
-  styleUrls: ['./cadastro.component.css']
+  styleUrls: ['./cadastro.component.css'],
 })
 export class CadastroComponent {
   usuario = { nome: '', email: '', cpf: '' };
@@ -18,14 +21,19 @@ export class CadastroComponent {
   constructor(private http: HttpClient, private router: Router) {}
 
   cadastrar() {
-    this.http.post<{ mensagem: string }>('http://backend:4000/cadastrar', this.usuario).subscribe({
-      next: () => {
-        this.mensagem = 'Cadastro realizado com sucesso!';
-        this.router.navigate(['/login']);
-      },
-      error: (err) => {
-        this.mensagem = err.error?.mensagem || 'Erro ao cadastrar usuário.';
-      }
-    });
+    this.http
+      .post<{ mensagem: string }>(
+        `${environment.apiUrl}/cadastrar`,
+        this.usuario
+      )
+      .subscribe({
+        next: () => {
+          this.mensagem = 'Cadastro realizado com sucesso!';
+          this.router.navigate(['/login']);
+        },
+        error: (err) => {
+          this.mensagem = err.error?.mensagem || 'Erro ao cadastrar usuário.';
+        },
+      });
   }
 }
