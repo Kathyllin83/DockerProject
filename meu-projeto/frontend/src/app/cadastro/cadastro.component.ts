@@ -18,7 +18,7 @@ export class CadastroComponent {
   constructor(private http: HttpClient, private router: Router) {}
 
   cadastrar() {
-    this.http.post<{ mensagem: string }>('http://localhost:4000/cadastrar', this.usuario).subscribe({
+    this.http.post<{ mensagem: string }>('http://localhost:3001/cadastrar', this.usuario).subscribe({
       next: () => {
         this.mensagem = 'Cadastro realizado com sucesso!';
         this.router.navigate(['/login']);
